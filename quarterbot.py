@@ -36,7 +36,7 @@ while(True):
     if(currentdate != prevdate):
         print("New date:", currentdate)
         
-    month = currentdate.month
+    month = currentdate.month 
     day = currentdate.day
     year = currentdate.year
 
@@ -46,31 +46,30 @@ while(True):
 
     monthname = month_name[month] #get the string value of the current month
 
-    tweet = monthname + " progress:\n" #string that will be
-                                                                      # the tweet 
+    tweet = monthname + " progress:\n" #string that will be the tweet                                                                      
 
     #if there is a new percentage then tweet 
     if percentage != prevpercentage and ((day >= (lastdaytweeted + 4)) or (day == daysthismonth)):
-       amountFill = round((day/daysthismonth) * 15)
-       amountEmpty = 15-amountFill
+       amountFill = round((day/daysthismonth) * 15) # calculate how many filled bars we need
+       amountEmpty = 15-amountFill #calculate how many empty bars we need
        
-       tweet += fill*amountFill
-       tweet += empty*amountEmpty
+       tweet += fill*amountFill #add the filled bars to the tweet string
+       tweet += empty*amountEmpty #add the emptybars to the tweet string
 
-       tweet += (" " + str(round(percentage)) + "%")
-       api.update_status(tweet)
+       tweet += (" " + str(round(percentage)) + "%") #add the percentage to the tweet string
+       api.update_status(tweet) #send out the tweet
        
-       if day == daysthismonth:
+       if day == daysthismonth: #if it is the last day of the month reset lastdaytweeted to 3
            lastdaytweeted = 3
        else:
-           lastdaytweeted = day
+           lastdaytweeted = day #else set the lastdaytweeted to the current day 
            
        print("Tweet made on", currentdate, ":\n\n" + tweet)
        print("\nLast day tweeted:", lastdaytweeted)
        print("")
             
-    prevpercentage = percentage
-    prevdate = currentdate
+    prevpercentage = percentage #set the previous percentage to the current percentage
+    prevdate = currentdate #set the previous date to the current date
 
 
     
