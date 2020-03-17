@@ -1,6 +1,7 @@
 from datetime import datetime
 from calendar import monthrange
 from calendar import month_name
+from math import floor
 
 import pytz
 import twitter
@@ -50,13 +51,13 @@ while(True):
 
     #if there is a new percentage then tweet 
     if percentage != prevpercentage and ((day >= (lastdaytweeted + 4)) or (day == daysthismonth)):
-       amountFill = round((day/daysthismonth) * 15) # calculate how many filled bars we need
+       amountFill = floor((day/daysthismonth) * 15) # calculate how many filled bars we need
        amountEmpty = 15-amountFill #calculate how many empty bars we need
        
        tweet += fill*amountFill #add the filled bars to the tweet string
        tweet += empty*amountEmpty #add the emptybars to the tweet string
 
-       tweet += (" " + str(round(percentage)) + "%") #add the percentage to the tweet string
+       tweet += (" " + str(floor(percentage)) + "%") #add the percentage to the tweet string
        api.update_status(tweet) #send out the tweet
        
        if day == daysthismonth: #if it is the last day of the month reset lastdaytweeted to 3
