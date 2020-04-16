@@ -9,10 +9,11 @@ import tweepy
 
 
 
-consumerK = "3aOb8SjxLWSOFl9j8TDtHW1bQ"
+consumerK = "3aOb8SjxLWSOFl9j8TDtHW1bQ"   
 consumerS = "x7bha2KZ4j3K2WT3iMQ91OdRCm34mpWqezB9aExbnmKHJyjplh"
 accessK = "984326022903447552-GHx4YWRCbjkipUoxksbbzcwhwognFYi"
 accessS = "PwRn2TlJ297dimL1VHTBtYzDuhO9T0uYXsMtr48n36DfE"
+#these keys dont actually work of course ;)
 
 auth = tweepy.OAuthHandler(consumerK, consumerS)
 
